@@ -7,7 +7,7 @@ CompareLength <- function(a, b) {
 }
 
 # Pass two vectors of different length to your `CompareLength` function
-CompareLength((1, 2, 4), (6, 3, 7))
+CompareLength(c(1, 2, 4), c(6, 3, 7))
 
 # Write a function `DescribeDifference` that will return one of the following statements:
 # "Your first vector is longer by N elements"
@@ -19,8 +19,13 @@ DescribeDifference <- function(a, b) {
 }
 
 # Pass two vectors to your `DescribeDifference` function
-DescribeDifference((1, 2, 6), (3, 9))
+DescribeDifference(c(1, 2, 6), c(3, 9))
 
 ### Bonus ###
 
 # Rewrite your `DescribeDifference` function to tell you the name of the vector which is longer
+DescribeDifference <- function(a, b) {
+  len.diff <- (length(a) - length(b))
+    word <- ifelse(len.diff < 0, deparse(substitute(b)), deparse(substitute(a)))
+    return (paste('Your', word, 'vector is longer by', abs(len.diff), 'elements'))
+}
